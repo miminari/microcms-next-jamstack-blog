@@ -1,44 +1,47 @@
-import Head from 'next/head';
+import Header from '../../components/Header.js';
 import styles from '../../styles/Home.module.scss';
 
 export default function BlogId({ blog }) {
   return (
-    <div>
-      <Head>
-        <title>{blog.title} | miminari Next.js Test Blog</title>
-      </Head>
+    <>
+      <Header />
       <main className={styles.main}>
 
-        <h1 className={styles.title}>{blog.title}</h1>
+        <article>
 
-        {blog.image && (
-          <picture>
-            <source
-              srcSet={blog.image.url + "?w=1280"}
-              media="(min-width: 1280px)"
-            />
-            <source
-              srcSet={blog.image.url + "?w=768"}
-              media="(min-width: 768px)"
-            />
-            <source
-              srcSet={blog.image.url + "?w=480"}
-              media="(min-width: 480px)"
-            />
-            <img src={blog.image.url + "?w=480"} alt="" />
-          </picture>
-        )}
+          <h1 className={styles.title}>{blog.title}</h1>
 
-        <p className={styles.publishedAt}>{blog.publishedAt}</p>
-        <p className={styles.category}>{blog.category && `${blog.category.name}`}</p>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `${blog.body}`,
-          }}
-          className={styles.post}
-        />
+          {blog.image && (
+            <picture>
+              <source
+                srcSet={blog.image.url + "?w=1280"}
+                media="(min-width: 1280px)"
+              />
+              <source
+                srcSet={blog.image.url + "?w=768"}
+                media="(min-width: 768px)"
+              />
+              <source
+                srcSet={blog.image.url + "?w=480"}
+                media="(min-width: 480px)"
+              />
+              <img src={blog.image.url + "?w=480"} alt="" />
+            </picture>
+          )}
+
+          <p className={styles.publishedAt}>{blog.publishedAt}</p>
+          <p className={styles.category}>{blog.category && `${blog.category.name}`}</p>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `${blog.body}`,
+            }}
+            className={styles.post}
+          />
+
+        </article>
+
       </main>
-    </div>
+    </>
   );
 }
 
